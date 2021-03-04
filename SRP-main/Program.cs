@@ -2,6 +2,27 @@
 
 namespace SRP_main
 {
+    /*
+     * SRP - single responsibility principle
+     *
+     * One change for one purpose only change in one place!
+     *
+     * Broken application apart in nitty pieces
+     * On change you know exactly where to go (assuming good naming)
+     * Folder structure with lots of classes
+     * Readable main!
+     * generally small mathods and small classes!
+     * 
+     * if navigating with F12! It doesnt mather how many files there is.
+     * easier to understand smaller chunks, easier to read
+     * 
+     * Find the ballance
+     * 
+     * Rule of thumb! If you have to scroll think about it.
+     * Do you change this class for more then one reason?
+     * 
+     */
+
     class Program
     {
         static void Main(string[] args) //Main is only responsible for flow
@@ -10,7 +31,7 @@ namespace SRP_main
 
             Person user = PersonDataCapture.Capture(); //Hard coupling (bad)
 
-            bool isUserValid = PersonValidator.Validate(user);
+            bool isUserValid = PersonValidator.Validate(user); 
 
             if (isUserValid == false)
             {

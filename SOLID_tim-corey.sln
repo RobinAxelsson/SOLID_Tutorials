@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SRP", "SRP\SRP.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRP-main", "SRP-main\SRP-main.csproj", "{9C55EE57-655E-4E20-8F16-35FD35C79FD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCP_ConsoleUI", "OCP_ConsoleUI\OCP_ConsoleUI.csproj", "{75E98420-CB35-4FCC-B086-4297A0219E85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCP_Library", "OCP_Library\OCP_Library.csproj", "{1B185818-9938-478D-82A0-CCAF1676CFC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{9C55EE57-655E-4E20-8F16-35FD35C79FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C55EE57-655E-4E20-8F16-35FD35C79FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C55EE57-655E-4E20-8F16-35FD35C79FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E98420-CB35-4FCC-B086-4297A0219E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E98420-CB35-4FCC-B086-4297A0219E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E98420-CB35-4FCC-B086-4297A0219E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E98420-CB35-4FCC-B086-4297A0219E85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B185818-9938-478D-82A0-CCAF1676CFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B185818-9938-478D-82A0-CCAF1676CFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B185818-9938-478D-82A0-CCAF1676CFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B185818-9938-478D-82A0-CCAF1676CFC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
