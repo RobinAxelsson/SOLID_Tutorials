@@ -18,24 +18,32 @@ namespace OCP_ConsoleUI
      *              What did we change?
      *                      All classes... thats a lot for a system that is already working!
      *                      From simple to messy with 2-3 changes
+     *     
+     *     First to implement OCP: Do NOT tie yourself to classes (more in D in solid)
+     *          Instead use interfaces!
+     *          Dont change names halfway down the road
+     *          Inteface = contract
+     *          DRY - dont repeat yourself
+     *          
+     * Tutorial: https://youtu.be/VFlk43QGEgc?t=1966
      */
+
     class Program
     {
         static void Main(string[] args)
         {
 
-            var applicants = new List<PeronModel>()
+            var applicants = new List<IApplicantModel>()
            {
-               new PeronModel { FirstName = "bob", LastName = "al"},
-               new PeronModel { FirstName = "bert", LastName = "filial"},
-               new PeronModel { FirstName = "beata", LastName = "sjal"}
+               new PersonModel { FirstName = "bob", LastName = "al"},
+               new PersonModel { FirstName = "bert", LastName = "filial"},
+               new PersonModel { FirstName = "beata", LastName = "sjal", IsManager = true}
            };
 
             var employees = new List<EmployeeModel>();
-            var accountProcessor = new Accounts();
 
             foreach (var a in applicants)
-                employees.Add(accountProcessor.Create(a));
+                employees.Add(a.AccountProcessor.Create(a));
 
             foreach (var e in employees)
                 Console.WriteLine(
@@ -44,26 +52,65 @@ namespace OCP_ConsoleUI
             Console.ReadLine();
         }
 
-        public class Accounts
+        public interface IAccounts
         {
-            public EmployeeModel Create(PeronModel person)
+            EmployeeModel Create(IApplicantModel person);
+        }
+
+        public class Accounts : IAccounts
+        {
+            public EmployeeModel Create(IApplicantModel person)
             {
                 var output = new EmployeeModel();
 
                 output.FirstName = person.FirstName;
                 output.LastName = person.LastName;
-                output.EmailAddress = $"{person.FirstName.Substring(0, 1)}.{person.LastName}@rax.com";
+                output.EmailAddress = $"{person.FirstName.Substring(0, 1)}.{person.LastName}@rax.com IsManager: {person.IsManager}"; //this is against DRY so maybe do something here its same as in the other interface
 
-//Commenting out if-statements and adding switch changes functioning code, introduces bugs, and we forget to implement it
-//Endangering what we have already done - if it works - don't modify it in ways that introduces bugs.
+                
+                //Commenting out if-statements and adding switch changes functioning code, introduces bugs, and we forget to implement it
+                //Endangering what we have already done - if it works - don't modify it in ways that introduces bugs.
 
                 return output;
             }
         }
-        public class PeronModel
+
+        public class ManagerAccounts : IAccounts
+        {
+            public EmployeeModel Create(IApplicantModel person)
+            {
+                var output = new EmployeeModel();
+
+                output.FirstName = person.FirstName;
+                output.LastName = person.LastName;
+                output.EmailAddress = $"{person.FirstName.Substring(0, 1)}.{person.LastName}@rax.com IsManager: {person.IsManager}";
+
+                return output;
+            }
+        }
+
+        public class PersonModel : IApplicantModel
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public bool IsManager { get; set; }
+            public IAccounts AccountProcessor { get; set; } = new Accounts();
+
+        }
+        public class ManagerModel : IApplicantModel
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public bool IsManager { get; set; }
+            public IAccounts AccountProcessor { get; set; }
+        }
+
+        public interface IApplicantModel
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public bool IsManager { get; set; }
+            public IAccounts AccountProcessor { get; set; }
         }
 
         public class EmployeeModel
