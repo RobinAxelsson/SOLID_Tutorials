@@ -21,11 +21,13 @@ namespace OCP_ConsoleUI
      *     
      *     First to implement OCP: Do NOT tie yourself to classes (more in D in solid)
      *          Instead use interfaces!
-     *          Dont change names halfway down the road
-     *          Inteface = contract
-     *          DRY - dont repeat yourself
+     *          Don't change names halfway down the road
+     *          Interface = contract
+     *          DRY - don't repeat yourself
      *          
      * Tutorial: https://youtu.be/VFlk43QGEgc?t=1966
+     * 
+     * Interfaces allow us to change the implementation.
      */
 
     class Program
@@ -36,8 +38,8 @@ namespace OCP_ConsoleUI
             var applicants = new List<IApplicantModel>()
            {
                new PersonModel { FirstName = "bob", LastName = "al"},
-               new PersonModel { FirstName = "bert", LastName = "filial"},
-               new PersonModel { FirstName = "beata", LastName = "sjal", IsManager = true}
+               new ExecutiveModel { FirstName = "bert", LastName = "filial"},
+               new ManagerModel { FirstName = "beata", LastName = "sjal"}
            };
 
             var employees = new List<EmployeeModel>();
@@ -47,81 +49,9 @@ namespace OCP_ConsoleUI
 
             foreach (var e in employees)
                 Console.WriteLine(
-                    $"{e.FirstName} {e.LastName}: {e.EmailAddress}");
+                    $"{e.FirstName} {e.LastName}: {e.EmailAddress} IsManager: {e.IsManager} IsExecutive; {e.IsExecutive}");
 
             Console.ReadLine();
-        }
-
-        public interface IAccounts
-        {
-            EmployeeModel Create(IApplicantModel person);
-        }
-
-        public class Accounts : IAccounts
-        {
-            public EmployeeModel Create(IApplicantModel person)
-            {
-                var output = new EmployeeModel();
-
-                output.FirstName = person.FirstName;
-                output.LastName = person.LastName;
-                output.EmailAddress = $"{person.FirstName.Substring(0, 1)}.{person.LastName}@rax.com IsManager: {person.IsManager}"; //this is against DRY so maybe do something here its same as in the other interface
-
-                
-                //Commenting out if-statements and adding switch changes functioning code, introduces bugs, and we forget to implement it
-                //Endangering what we have already done - if it works - don't modify it in ways that introduces bugs.
-
-                return output;
-            }
-        }
-
-        public class ManagerAccounts : IAccounts
-        {
-            public EmployeeModel Create(IApplicantModel person)
-            {
-                var output = new EmployeeModel();
-
-                output.FirstName = person.FirstName;
-                output.LastName = person.LastName;
-                output.EmailAddress = $"{person.FirstName.Substring(0, 1)}.{person.LastName}@rax.com IsManager: {person.IsManager}";
-
-                return output;
-            }
-        }
-
-        public class PersonModel : IApplicantModel
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public bool IsManager { get; set; }
-            public IAccounts AccountProcessor { get; set; } = new Accounts();
-
-        }
-        public class ManagerModel : IApplicantModel
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public bool IsManager { get; set; }
-            public IAccounts AccountProcessor { get; set; }
-        }
-
-        public interface IApplicantModel
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public bool IsManager { get; set; }
-            public IAccounts AccountProcessor { get; set; }
-        }
-
-        public class EmployeeModel
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string EmailAddress { get; set; }
-
-            //adds this to get manager, this is dependent on the face of the project
-            //This is okay because it doesn't break any tests
-            //If not okay to edit the class add an Interface IManager with extra property.
         }
     }
 }
