@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIP_ConsoleUI", "DIP_Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSP", "LSP\LSP.csproj", "{DC572F05-C434-484B-AA60-DDF17E6A02AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISP", "ISP\ISP.csproj", "{03CD7B3B-E3B2-4134-9463-35CA9BD44CC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DC572F05-C434-484B-AA60-DDF17E6A02AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC572F05-C434-484B-AA60-DDF17E6A02AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC572F05-C434-484B-AA60-DDF17E6A02AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03CD7B3B-E3B2-4134-9463-35CA9BD44CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03CD7B3B-E3B2-4134-9463-35CA9BD44CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03CD7B3B-E3B2-4134-9463-35CA9BD44CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03CD7B3B-E3B2-4134-9463-35CA9BD44CC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
