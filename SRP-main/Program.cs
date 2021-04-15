@@ -11,12 +11,12 @@ namespace SRP_main
      * On change you know exactly where to go (assuming good naming)
      * Folder structure with lots of classes
      * Readable main!
-     * generally small mathods and small classes!
+     * generally small methods and small classes!
      * 
-     * if navigating with F12! It doesnt mather how many files there is.
+     * if navigating with F12! It doesn't matter how many files there is.
      * easier to understand smaller chunks, easier to read
      * 
-     * Find the ballance
+     * Find the balance
      * 
      * Rule of thumb! If you have to scroll think about it.
      * Do you change this class for more then one reason?
